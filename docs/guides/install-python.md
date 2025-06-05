@@ -122,6 +122,11 @@ documentation for more details.
 
 ## Upgrading Python patch versions
 
+!!! important
+
+    Support for upgrading Python patch versions is in _preview_. This means the behavior is experimental
+    and subject to change.
+
 To upgrade a uv-managed Python minor version:
 
 ```console

@@ -160,7 +160,7 @@ $ uv python install 3.12.8 --preview  # Updates `python3.12` to point to 3.12.8
 
 ## Upgrading Python patch versions
 
-<<<<<<< HEAD !!! important
+!!! important
 
     Support for upgrading Python patch versions is in _preview_. This means the behavior is experimental
     and subject to change.
