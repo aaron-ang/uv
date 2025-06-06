@@ -1389,7 +1389,7 @@ fn python_install_314() {
     success: true
     exit_code: 0
     ----- stdout -----
-    [TEMP_DIR]/managed/cpython-3.14.0a7-[PLATFORM]/[INSTALL-BIN]/python
+    [TEMP_DIR]/managed/cpython-3.14.0b1-[PLATFORM]/[INSTALL-BIN]/python
 
     ----- stderr -----
     ");
@@ -1399,7 +1399,7 @@ fn python_install_314() {
     success: true
     exit_code: 0
     ----- stdout -----
-    [TEMP_DIR]/managed/cpython-3.14.0a7-[PLATFORM]/[INSTALL-BIN]/python
+    [TEMP_DIR]/managed/cpython-3.14.0b1-[PLATFORM]/[INSTALL-BIN]/python
 
     ----- stderr -----
     ");
@@ -1408,7 +1408,7 @@ fn python_install_314() {
     success: true
     exit_code: 0
     ----- stdout -----
-    [TEMP_DIR]/managed/cpython-3.14.0a7-[PLATFORM]/[INSTALL-BIN]/python
+    [TEMP_DIR]/managed/cpython-3.14.0b1-[PLATFORM]/[INSTALL-BIN]/python
 
     ----- stderr -----
     ");
@@ -1428,7 +1428,7 @@ fn python_install_314() {
     success: true
     exit_code: 0
     ----- stdout -----
-    [TEMP_DIR]/managed/cpython-3.13.3-[PLATFORM]/[INSTALL-BIN]/python
+    [TEMP_DIR]/managed/cpython-3.13.4-[PLATFORM]/[INSTALL-BIN]/python
 
     ----- stderr -----
     ");
@@ -1562,7 +1562,7 @@ fn python_install_emulated_macos() {
     success: true
     exit_code: 0
     ----- stdout -----
-    [TEMP_DIR]/managed/cpython-3.13.3-macos-x86_64-none/bin/python3.13
+    [TEMP_DIR]/managed/cpython-3.13.4-macos-x86_64-none/bin/python3.13
 
     ----- stderr -----
     ");
@@ -1573,7 +1573,7 @@ fn python_install_emulated_macos() {
     exit_code: 0
     ----- stdout -----
     cpython-3.13.4-macos-aarch64-none    <download available>
-    cpython-3.13.4-macos-x86_64-none     managed/cpython-3.13.3-macos-x86_64-none/bin/python3.13
+    cpython-3.13.4-macos-x86_64-none     managed/cpython-3.13.4-macos-x86_64-none/bin/python3.13
 
     ----- stderr -----
     ");
@@ -1593,7 +1593,7 @@ fn python_install_emulated_macos() {
     success: true
     exit_code: 0
     ----- stdout -----
-    [TEMP_DIR]/managed/cpython-3.13.3-macos-aarch64-none/bin/python3.13
+    [TEMP_DIR]/managed/cpython-3.13.4-macos-aarch64-none/bin/python3.13
 
     ----- stderr -----
     ");
