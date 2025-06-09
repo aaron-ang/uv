@@ -139,7 +139,7 @@ fn python_upgrade_transparent_from_venv() {
     ");
 
     // Create a virtual environment
-    uv_snapshot!(context.filters(), context.venv().arg("--preview"), @r"
+    uv_snapshot!(context.filters(), context.venv(), @r"
     success: true
     exit_code: 0
     ----- stdout -----
@@ -163,7 +163,7 @@ fn python_upgrade_transparent_from_venv() {
     let second_venv = ".venv2";
 
     // Create a second virtual environment with minor version request
-    uv_snapshot!(context.filters(), context.venv().arg("--preview").arg(second_venv).arg("-p").arg("3.10"), @r"
+    uv_snapshot!(context.filters(), context.venv().arg(second_venv).arg("-p").arg("3.10"), @r"
     success: true
     exit_code: 0
     ----- stdout -----
@@ -241,7 +241,7 @@ fn python_upgrade_transparent_from_venv_preview() {
     ");
 
     // Create a virtual environment
-    uv_snapshot!(context.filters(), context.venv().arg("--preview").arg("-p").arg("3.10"), @r"
+    uv_snapshot!(context.filters(), context.venv().arg("-p").arg("3.10"), @r"
     success: true
     exit_code: 0
     ----- stdout -----
@@ -304,7 +304,7 @@ fn python_upgrade_ignored_with_python_pin() {
     ");
 
     // Create a virtual environment
-    uv_snapshot!(context.filters(), context.venv().arg("--preview"), @r"
+    uv_snapshot!(context.filters(), context.venv(), @r"
     success: true
     exit_code: 0
     ----- stdout -----
@@ -369,7 +369,7 @@ fn python_no_transparent_upgrade_with_venv_patch_specification() {
     ");
 
     // Create a virtual environment with a patch version
-    uv_snapshot!(context.filters(), context.venv().arg("--preview").arg("-p").arg("3.10.8"), @r"
+    uv_snapshot!(context.filters(), context.venv().arg("-p").arg("3.10.8"), @r"
     success: true
     exit_code: 0
     ----- stdout -----
@@ -435,7 +435,7 @@ fn python_transparent_upgrade_venv_venv() {
     ");
 
     // Create an initial virtual environment
-    uv_snapshot!(context.filters(), context.venv().arg("--preview").arg("-p").arg("3.10"), @r"
+    uv_snapshot!(context.filters(), context.venv().arg("-p").arg("3.10"), @r"
     success: true
     exit_code: 0
     ----- stdout -----
@@ -456,7 +456,6 @@ fn python_transparent_upgrade_venv_venv() {
 
     // Create a new virtual environment from within a virtual environment
     uv_snapshot!(context.filters(), context.venv()
-        .arg("--preview")
         .arg(second_venv)
         .arg("-p").arg(venv_python.as_os_str()), @r"
     success: true
@@ -531,9 +530,7 @@ fn python_upgrade_transparent_from_venv_module() {
     ");
 
     // Create a virtual environment using venv module
-    // A transparently upgradeable virtual environment can only be created using
-    // the `venv` module when using the `--preview` flag.
-    uv_snapshot!(context.filters(), context.run().arg("--preview").arg("python").arg("-m").arg("venv").arg(context.venv.as_os_str()).arg("--without-pip")
+    uv_snapshot!(context.filters(), context.run().arg("python").arg("-m").arg("venv").arg(context.venv.as_os_str()).arg("--without-pip")
         .env(EnvVars::PATH, bin_dir.as_os_str()), @r"
     success: true
     exit_code: 0
@@ -600,7 +597,7 @@ fn python_upgrade_transparent_from_venv_module_in_venv() {
     ");
 
     // Create first virtual environment
-    uv_snapshot!(context.filters(), context.venv().arg("--preview").arg("-p").arg("3.10"), @r"
+    uv_snapshot!(context.filters(), context.venv().arg("-p").arg("3.10"), @r"
     success: true
     exit_code: 0
     ----- stdout -----
@@ -614,10 +611,7 @@ fn python_upgrade_transparent_from_venv_module_in_venv() {
     let second_venv = ".venv2";
 
     // Create a virtual environment using `venv`` module from within the first virtual environment.
-    // A transparently upgradeable virtual environment can only be created using
-    // the `venv` module when using the `--preview` flag.
     uv_snapshot!(context.filters(), context.run()
-        .arg("--preview")
         .arg("python").arg("-m").arg("venv").arg(second_venv).arg("--without-pip")
         .env(EnvVars::PATH, bin_dir.as_os_str()), @r"
     success: true

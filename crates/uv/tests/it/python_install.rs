@@ -1621,7 +1621,7 @@ fn install_transparent_patch_upgrade_uv_venv() {
     );
 
     // Create a virtual environment.
-    uv_snapshot!(context.filters(), context.venv().arg("--preview").arg("-p").arg("3.12")
+    uv_snapshot!(context.filters(), context.venv().arg("-p").arg("3.12")
         .arg(context.venv.as_os_str()), @r"
     success: true
     exit_code: 0
@@ -1715,7 +1715,7 @@ fn install_multiple_patches() {
     );
 
     // Create a virtual environment.
-    uv_snapshot!(context.filters(), context.venv().arg("--preview").arg("-p").arg("3.12")
+    uv_snapshot!(context.filters(), context.venv().arg("-p").arg("3.12")
         .arg(context.venv.as_os_str()), @r"
     success: true
     exit_code: 0
@@ -1756,7 +1756,7 @@ fn install_multiple_patches() {
     );
 
     // Create a virtual environment on 3.10.
-    uv_snapshot!(context.filters(), context.venv().arg("--preview").arg("-p").arg("3.10")
+    uv_snapshot!(context.filters(), context.venv().arg("-p").arg("3.10")
         .arg(context.venv.as_os_str()), @r"
     success: true
     exit_code: 0
@@ -1805,7 +1805,7 @@ fn uninstall_highest_patch() {
     "
     );
 
-    uv_snapshot!(context.filters(), context.venv().arg("--preview").arg("-p").arg("3.12")
+    uv_snapshot!(context.filters(), context.venv().arg("-p").arg("3.12")
         .arg(context.venv.as_os_str()), @r"
     success: true
     exit_code: 0
@@ -1876,7 +1876,7 @@ fn install_no_transparent_upgrade_with_venv_patch_specification() {
     );
 
     // Create a virtual environment with a patch version
-    uv_snapshot!(context.filters(), context.venv().arg("--preview").arg("-p").arg("3.12.9")
+    uv_snapshot!(context.filters(), context.venv().arg("-p").arg("3.12.9")
         .arg(context.venv.as_os_str()), @r"
     success: true
     exit_code: 0
@@ -1957,9 +1957,7 @@ fn install_transparent_patch_upgrade_venv_module() {
     );
 
     // Create a virtual environment using venv module.
-    // A transparently upgradeable virtual environment can only be created using
-    // the `venv` module when using the `--preview` flag.
-    uv_snapshot!(context.filters(), context.run().arg("--preview").arg("python").arg("-m").arg("venv").arg(context.venv.as_os_str()).arg("--without-pip")
+    uv_snapshot!(context.filters(), context.run().arg("python").arg("-m").arg("venv").arg(context.venv.as_os_str()).arg("--without-pip")
         .env(EnvVars::PATH, bin_dir.as_os_str()), @r"
     success: true
     exit_code: 0
@@ -2023,7 +2021,7 @@ fn install_lower_patch_automatically() {
     "
     );
 
-    uv_snapshot!(context.filters(), context.venv().arg("--preview").arg("-p").arg("3.12")
+    uv_snapshot!(context.filters(), context.venv().arg("-p").arg("3.12")
         .arg(context.venv.as_os_str()), @r"
     success: true
     exit_code: 0
@@ -2049,7 +2047,6 @@ fn install_lower_patch_automatically() {
     // Create a new virtual environment to trigger automatic installation of
     // lower patch version
     uv_snapshot!(context.filters(), context.venv()
-        .arg("--preview")
         .arg("--directory").arg("proj")
         .arg("-p").arg("3.12.9"), @r"
     success: true
@@ -2093,7 +2090,7 @@ fn uninstall_last_patch() {
     "
     );
 
-    uv_snapshot!(context.filters(), context.venv().arg("--preview").arg("-p").arg("3.10"), @r"
+    uv_snapshot!(context.filters(), context.venv().arg("-p").arg("3.10"), @r"
     success: true
     exit_code: 0
     ----- stdout -----

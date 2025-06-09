@@ -691,9 +691,6 @@ impl DirectorySymlink {
         key: &PythonInstallationKey,
         preview: PreviewMode,
     ) -> Option<Self> {
-        if preview.is_disabled() {
-            return None;
-        }
         let implementation = key.implementation();
         if !matches!(
             implementation,
@@ -737,11 +734,20 @@ impl DirectorySymlink {
             &executable_name.to_string_lossy(),
             implementation,
         );
-        Some(Self {
+        let directory_symlink = Self {
             symlink_directory,
             symlink_executable,
             target_directory,
-        })
+        };
+        // If preview mode is disabled, still return a `DirectorySymlink` for
+        // existing symlinks, allowing continued operations without the `--preview`
+        // flag after initial symlink directory installation.
+        if preview.is_disabled() {
+            if !directory_symlink.symlink_exists() {
+                return None;
+            }
+        }
+        Some(directory_symlink)
     }
 
     pub fn from_installation(
